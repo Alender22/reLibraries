@@ -43,4 +43,19 @@ bool containsSubstring(string main, string sub);
 //alias for containsSubstring with char as subString
 bool containsSubstring(string main, char sub);
 
+//Description: Pads string to given length with pad char, in designated mode
+//Pre:String to pad, pad char, target length and padmode [1 : padLeft, 2 : padRigth, 3 : padCenter]
+//Post:String padded in desired manner
+string padString(string original, char padChar, int targetLength, int padMode);
+
+//Alias for padString function
+string padRight(string original, char padChar, int targetLength);
+
+//Alias for padString function
+string padLeft(string original, char padChar, int targetLength);
+
+//Alias for padString function
+string padCenter(string original, char padChar, int targetLength);
+
+
 #endif 

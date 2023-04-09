@@ -10,7 +10,7 @@
 //otherwise
 //  append current char to end of token string
 //check if current i does not allow for further substring matches
-//  if so, append remainder of main string to token string 
+//  if so, append remainder of original string to token string 
 //  and append token string to tokens list
 //  return tokens list
 vector<string> splitStringAt(string toSplit, string splitAt)
@@ -47,15 +47,15 @@ vector<string> splitStringAt(string toSplit, char splitAt)
     return splitStringAt(toSplit, marker);
 }
 
-//split main string at replace string
+//split original string at replace string
 //append token to formatted string
 //for token in tokens
 //  if appended token is not the last token
 //    append replace string to formatted string
 //return formatted string
-string replaceSubtsring(string main, string replace, string newString)
+string replaceSubtsring(string original, string replace, string newString)
 {
-    vector<string> tokens = splitStringAt(main, replace);
+    vector<string> tokens = splitStringAt(original, replace);
     string formatted = "";
 
     for(int i = 0; i < tokens.size(); i++)
@@ -71,23 +71,23 @@ string replaceSubtsring(string main, string replace, string newString)
 }
 
 template<typename a, typename b>
-string replaceSubtsring(string main, a replaceChars, b newChars)
+string replaceSubtsring(string original, a replaceChars, b newChars)
 {
     string replaceString = "";
     replaceString += replaceChars;
 
     string newString = "";
     newString += newChars;
-    return replaceSubtsring(main, replaceString, newString);
+    return replaceSubtsring(original, replaceString, newString);
 }
 
-//Split main string at toDelete string.
+//Split original string at toDelete string.
 //make an empty formatted string
 //append each token to the formatted string
 //return formatted string
-string deleteSubstring(string main, string toDelete)
+string deleteSubstring(string original, string toDelete)
 {
-    vector<string> tokens = splitStringAt(main, toDelete);
+    vector<string> tokens = splitStringAt(original, toDelete);
     string formattedString = "";
 
     for(int i = 0; i < tokens.size(); i++)
@@ -98,21 +98,21 @@ string deleteSubstring(string main, string toDelete)
     return formattedString;
 }
 
-string deleteSubstring(string main, char toDeleteChar)
+string deleteSubstring(string original, char toDeleteChar)
 {
     string toDeleteString = "";
     toDeleteString += toDeleteChar;
-    return deleteSubstring(main, toDeleteString);
+    return deleteSubstring(original, toDeleteString);
 }
 
-//compair every substring of length of sub in main with sub
+//compair every substring of length of sub in original with sub
 //if a match is encountered, return true
 //else return false
-bool containsSubstring(string main, string sub)
+bool containsSubstring(string original, string sub)
 {
-    for(int i = 0; i <= main.length() - sub.length(); i++)
+    for(int i = 0; i <= original.length() - sub.length(); i++)
     {
-        if(main.substr(i, sub.length()) == sub)
+        if(original.substr(i, sub.length()) == sub)
         {
             return true;
         }
@@ -120,9 +120,64 @@ bool containsSubstring(string main, string sub)
     return false;
 }
 
-bool containsSubstring(string main, char sub)
+bool containsSubstring(string original, char sub)
 {
     string subString = "";
     subString += sub;
-    return containsSubstring(main, subString);
+    return containsSubstring(original, subString);
+}
+
+string padString(string original, char padChar, int targetLength, int padMode)
+{
+    if(padMode == 1) //Left bound padding
+    {
+        while(original.length() < targetLength)
+        {
+            original = padChar + original;
+        }
+    }
+    else if(padMode == 2) //Right bound padding
+    {
+        while(original.length() < targetLength)
+        {
+            original += padChar;
+        }
+    }
+    else if(padMode == 3)
+    {
+        while(original.length() < targetLength)
+        {
+            if((original.length() - targetLength) % 2 == 0)
+            {
+                original += padChar;
+            }
+            else 
+            {
+                original = padChar + original;
+            }
+        }
+    }
+    else
+    {
+        cout << "padMode of: " << padMode << " is not recognized in padString function." << endl;
+        cout << "Returning original unchanged." << endl;
+        return original;
+    }
+
+    return original;
+}
+
+string padRight(string original, char padChar, int targetLength)
+{
+    return padString(original, padChar, targetLength, 2);
+}
+
+string padLeft(string original, char padChar, int targetLength)
+{
+    return padString(original, padChar, targetLength, 1);
+}
+
+string padCenter(string original, char padChar, int targetLength)
+{
+    return padString(original, padChar, targetLength, 3);
 }
