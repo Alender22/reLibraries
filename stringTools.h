@@ -27,4 +27,11 @@ string replaceSubtsring(string main, string replace, string newString);
 template<typename a, typename b>
 string replaceSubtsring(string main, a replaceChar, b newString);
 
+//Description: Deletes a given substring from a given string
+//Pre: A string, and a substring to remove
+//Post: String with all instances of the substring removed
+string deleteSubstring(string main, string toDelete);
+
+//Alias for deleteSubstring with char as deletion substring
+string deleteSubstring(string main, char toDeleteChar);
 #endif 

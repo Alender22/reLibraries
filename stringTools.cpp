@@ -80,3 +80,27 @@ string replaceSubtsring(string main, a replaceChars, b newChars)
     newString += newChars;
     return replaceSubtsring(main, replaceString, newString);
 }
+
+//Split main string at toDelete string.
+//make an empty formatted string
+//append each token to the formatted string
+//return formatted string
+string deleteSubstring(string main, string toDelete)
+{
+    vector<string> tokens = splitStringAt(main, toDelete);
+    string formattedString = "";
+
+    for(int i = 0; i < tokens.size(); i++)
+    {
+        formattedString += tokens[i];
+    }
+
+    return formattedString;
+}
+
+string deleteSubstring(string main, char toDeleteChar)
+{
+    string toDeleteString = "";
+    toDeleteString += toDeleteChar;
+    return deleteSubstring(main, toDeleteString);
+}
