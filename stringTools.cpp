@@ -104,3 +104,25 @@ string deleteSubstring(string main, char toDeleteChar)
     toDeleteString += toDeleteChar;
     return deleteSubstring(main, toDeleteString);
 }
+
+//compair every substring of length of sub in main with sub
+//if a match is encountered, return true
+//else return false
+bool containsSubstring(string main, string sub)
+{
+    for(int i = 0; i <= main.length() - sub.length(); i++)
+    {
+        if(main.substr(i, sub.length()) == sub)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool containsSubstring(string main, char sub)
+{
+    string subString = "";
+    subString += sub;
+    return containsSubstring(main, subString);
+}

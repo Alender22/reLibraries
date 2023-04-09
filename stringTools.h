@@ -34,4 +34,13 @@ string deleteSubstring(string main, string toDelete);
 
 //Alias for deleteSubstring with char as deletion substring
 string deleteSubstring(string main, char toDeleteChar);
+
+//Description: returns whether the main string contains the sub string
+//Pre: a main and sub string
+//Post: true if substring is contained, else false
+bool containsSubstring(string main, string sub);
+
+//alias for containsSubstring with char as subString
+bool containsSubstring(string main, char sub);
+
 #endif 
