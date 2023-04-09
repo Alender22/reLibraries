@@ -57,5 +57,4 @@ string padLeft(string original, char padChar, int targetLength);
 //Alias for padString function
 string padCenter(string original, char padChar, int targetLength);
 
-
 #endif 

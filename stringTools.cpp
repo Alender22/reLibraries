@@ -127,6 +127,13 @@ bool containsSubstring(string original, char sub)
     return containsSubstring(original, subString);
 }
 
+//Check padding mode
+//if pad left 
+//  pad padChar to the left of the string, until original length is greater targetLength
+//if pad right
+//  pad padChar to the right of the string, until original length is greater targetLength
+//if pad center
+// pad padChar alternatingly to the right and left of the string, until original length is greater targetLength
 string padString(string original, char padChar, int targetLength, int padMode)
 {
     if(padMode == 1) //Left bound padding
@@ -167,16 +174,19 @@ string padString(string original, char padChar, int targetLength, int padMode)
     return original;
 }
 
+//See description of padString function
 string padRight(string original, char padChar, int targetLength)
 {
     return padString(original, padChar, targetLength, 2);
 }
 
+//See description of padString function
 string padLeft(string original, char padChar, int targetLength)
 {
     return padString(original, padChar, targetLength, 1);
 }
 
+//See description of padString function
 string padCenter(string original, char padChar, int targetLength)
 {
     return padString(original, padChar, targetLength, 3);
